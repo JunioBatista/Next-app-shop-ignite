@@ -1,8 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import { getCssText } from '../styles'
 
-
-
 export default function Document() {
     return (
         <Html>
@@ -17,6 +15,5 @@ export default function Document() {
                 <NextScript />
             </body>
         </Html>
-        
     )
 }
