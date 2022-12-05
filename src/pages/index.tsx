@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
+import Stripe from "stripe";
+import { GetStaticProps } from "next";
+import Head from 'next/head'
 
 import { HomeContainer, Product } from "../styles/pages/home";
 import { stripe } from "../lib/stripe";
-import Stripe from "stripe";
-import { GetStaticProps } from "next";
 
 
 interface HomeProps {
@@ -28,28 +29,33 @@ export default function Home( { products }: HomeProps) {
   })
 
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
+    <>
+      <Head>
+        <title>Home | ShirtShop</title>
+      </Head>
+      <HomeContainer ref={sliderRef} className="keen-slider">
 
-      {products.map((product)=> {
-        return (
-            <Product 
-              key={product.id} 
-              href={`/product/${product.id}`} 
-              className="keen-slider__slide" 
-              prefetch={false} 
-            >
-              <Image src={product.imageUrl} alt="camiseta" width="520" height="480" />
-      
-              <footer>
+        {products.map((product)=> {
+          return (
+              <Product 
+                key={product.id} 
+                href={`/product/${product.id}`} 
+                className="keen-slider__slide" 
+                prefetch={false} 
+              >
+                <Image src={product.imageUrl} alt="camiseta" width="520" height="480" />
+        
+                <footer>
 
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-              </footer>
-            </Product > 
-        )
-      })}
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </footer>
+              </Product > 
+          )
+        })}
 
-    </HomeContainer>
+      </HomeContainer>
+    </>
   )
 }
 
