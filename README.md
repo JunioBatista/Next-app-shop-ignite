@@ -1,4 +1,4 @@
-# Ecomerce de Camisas
+# E-commerce  de Camisas
 
 Aplicação criada para praticar os conceitos do Next, como SSR, SSG, e Next API. 
 E integração com Stripe.
